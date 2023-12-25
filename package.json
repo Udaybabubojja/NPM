@@ -1,0 +1,11 @@
+{
+  "name": "node_module",
+  "version": "1.0.0",
+  "description": "node.js implemnentation",
+  "main": "index.js",
+  "scripts": {
+    "test": "start"
+  },
+  "author": "uday",
+  "license": "ISC"
+}
