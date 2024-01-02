@@ -30,7 +30,7 @@ describe("This is an Todo List", () => {
 
   test("2. Marking a todo as completed", () => {
     expect(all[0].completed).toBe(false);
-    markAsCompleted(0);
+    markAsCompleted(0); //njn
     expect(all[0].completed).toBe(true);
   });
 
