@@ -8,6 +8,7 @@ const todoList = () => {
   };
   const overdue = () => {
     const today = new Date();
+    today.setHours(0, 0, 0, 0);
     return all.filter(
       (item) => !item.completed && new Date(item.dueDate) < today,
     );
@@ -17,8 +18,7 @@ const todoList = () => {
     return all.filter(
       (item) =>
         !item.completed &&
-        new Date(item.dueDate).toISOString().split("T")[0] ===
-          formattedDate(today),
+        formattedDate(new Date(item.dueDate)) === formattedDate(today),
     );
   };
   const dueLater = () => {
@@ -30,9 +30,7 @@ const todoList = () => {
   const toDisplayableList = (list) => {
     return list.map((item) => {
       const checkbox = item.completed ? "[x]" : "[ ]";
-      return `${checkbox} ${item.title} ${formattedDate(
-        new Date(item.dueDate),
-      )}`;
+      return `${checkbox} ${item.title} ${item.dueDate}`;
     });
   };
   return {
@@ -44,6 +42,10 @@ const todoList = () => {
     dueLater,
     toDisplayableList,
   };
+};
+
+const formattedDate = (date) => {
+  return date.toISOString().split("T")[0];
 };
 
 module.exports = todoList;
